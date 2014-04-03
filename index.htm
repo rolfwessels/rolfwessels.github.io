@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0022)http://mediamad.co.za/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	
+	<title>Media Mad</title>
+	
+	<style type="text/css" media="screen">
+		@import "css/site-basic.css";
+		@import "css/site-layout.css";
+		@import "css/jquery.tooltip.css";
+		@import "css/jplayer.blue.monday.css";
+		@import "css/jquery-ui-1.8.1.custom.css";
+	</style>	
+
+	 <!--[if lte IE 6]>
+	 	<style>
+	 		.pngFix { behavior: url("iepngfix.htc"); }
+	 	</style>
+	 <![endif]-->	
+	
+	<script type="text/javascript" src="./Media Mad_files/main.js"></script><style type="text/css"></style>
+	<script type="text/javascript" src="./Media Mad_files/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="./Media Mad_files/jquery-ui-1.8.1.custom.min.js"></script>
+	<script type="text/javascript" src="./Media Mad_files/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="./Media Mad_files/jquery.tooltip.min.js"></script>
+	<script type="text/javascript" src="./Media Mad_files/iepngfix_tilebg.js"></script>
+    <script type="text/javascript" src="./Media Mad_files/swfObject.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+
+			$('#dialog').dialog({
+				autoOpen: false,
+				position: ['center',50],
+				resizable: false,
+				draggable: false,
+				width:	550,
+				modal: true
+			});
+
+			$('#dialog-play').dialog({
+				autoOpen: false,
+				resizable: false,
+				draggable: false,
+				width:	450,
+				modal: true,
+				beforeclose: function(event, ui) { 
+					$('#jplayer').jPlayer('stop');
+					$('#jloop').jPlayer('stop');
+				}
+			});
+
+			$("#tpreview,#tdownload,#tluister,#taflaai").tooltip({
+				showURL: false,
+				showBody: " - "
+			});
+			
+		});
+
+		function Play(lang) {
+			$('#dialog-play').html('Loading...').load('index.php?tmpl=ajax&mod=audio&nav=play&lang=' + lang).dialog('open');
+		}
+		
+	</script>
+
+</head>
+
+<body>
+
+	
+	
+
+	<div style="position:absolute; margin-top:80px; width:100%; height:850px; background:url(images/bg-back.jpg) top center no-repeat;">
+	
+		<div id="container">
+		
+			<div id="header">
+				<center><img src="./Media Mad_files/logo.png" class="pngFix" style="margin-top:15px;" alt="MediaMad"></center>
+			</div>
+		
+			<div id="content">
+			
+				<img src="./Media Mad_files/sport.png" alt="Sport" class="pngFix" style="position:absolute; margin:25px 0 0 275px;">
+			
+				<div id="c-boxes">
+				
+					<div class="left half">
+						
+						<div style="position:absolute; margin-left:50px;">
+							<img src="./Media Mad_files/box-eng.png" class="pngFix" usemap="#Map1" style="border:0;">
+							<map id="_Map1" name="Map1">
+								<area shape="rect" coords="46,136,204,186" href="javascript:Play('eng');" id="tpreview" alt="">
+								<area shape="rect" coords="47,189,205,239" href="http://mediamad.co.za/index.php?tmpl=ajax&mod=audio&nav=download&lang=eng" id="tdownload" alt="">
+							</map>						
+						</div>
+						
+						<div class="box" style="position:absolute; margin:60px 0 0 75px;">
+							The latest sport news 
+							<div style="margin-top:5px; font-size:0.7em; line-height:16px;">Updated weekdays @ <br> 7:00, 13:00 &amp; 17:00</div>
+						</div>
+						
+					</div>
+				
+					<div class="right half">
+					
+						<div style="position:absolute; right:0; margin-right:50px;">
+							<img src="./Media Mad_files/box-afr.png" class="pngFix" usemap="#Map2" style="border:0;">
+							<map id="_Map2" name="Map2">
+								<area shape="rect" coords="45,137,208,187" href="javascript:Play('afr');" id="tluister" alt="">
+								<area shape="rect" coords="45,190,208,240" href="http://mediamad.co.za/index.php?tmpl=ajax&mod=audio&nav=download&lang=afr" id="taflaai" alt="">
+							</map>						
+						</div>
+						
+						<div class="box" style="position:absolute; margin:60px 0 0 65px;">
+							Die jongste sport nuus 
+							<div style="margin-top:5px; font-size:0.7em; line-height:16px;">Beskikbaar weeksdae @ <br> 7:00, 13:00 &amp; 17:00</div>
+						</div>
+						
+					</div>			
+				
+					<div class="spacer"></div>				
+				
+				</div>
+			
+							
+				<div id="c-foot">
+					<a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=sport@global.co.za" target="_blank">CONTACT US</a> | <a href="javascript:OpenDialog('index.php?nav=terms','TERMS OF USE');">TERMS OF USE</a> <br>
+					Copyright MEDIA MAD 2010. All Rights Reserved.
+				</div>			
+			
+			</div>
+		
+		</div>	
+	
+	</div>
+
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all " tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-dialog" style="display: none; z-index: 1000; outline: 0px;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" unselectable="on"><span class="ui-dialog-title" id="ui-dialog-title-dialog" unselectable="on">MediaMad</span><a href="http://mediamad.co.za/#" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on"><span class="ui-icon ui-icon-closethick" unselectable="on">close</span></a></div><div id="dialog" class="ui-dialog-content ui-widget-content"></div></div><div id="tooltip" style="display: none; left: 827px; right: auto; top: 368px;"><h3>Luister</h3><div class="body">Met musiek.</div><div class="url" style="display: none;"></div></div><div class="ui-dialog ui-widget ui-widget-content ui-corner-all " tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-dialog-play" style="display: none; z-index: 1002; outline: 0px; height: auto; width: 450px; top: 371px; left: 404px;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" unselectable="on"><span class="ui-dialog-title" id="ui-dialog-title-dialog-play" unselectable="on">MediaMad</span><a href="http://mediamad.co.za/#" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on"><span class="ui-icon ui-icon-closethick" unselectable="on">close</span></a></div><div id="dialog-play" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 108px; height: auto;">
+				
+				
+				<div id="jplayer" style="position: absolute; top: 0px; left: 0px;"><embed name="jqjp_flash_0" id="jqjp_flash_0" src="javascript/Jplayer.swf" width="0" height="0" bgcolor="#ffffff" quality="high" flashvars="id=jplayer&amp;fid=jqjp_flash_0&amp;vol=35" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"><div id="jqjp_force_0" style="text-indent: -9999px;">0.3835329292342067</div></div>
+				<div id="jloop" style="position: absolute; top: 0px; left: -9999px;"><audio preload="auto" id="jqjp_audio_1" src="storage/audio/loop.mp3"></audio><div id="jqjp_force_1" style="text-indent: -9999px;">0.674526325892657</div></div>
+				
+				<div class="jp-single-player">
+					<div class="jp-interface">
+						<ul class="jp-controls">
+							<li><a href="http://mediamad.co.za/#" id="jplayer_play" class="jp-play" tabindex="1" style="display: block;">play</a></li>
+							<li><a href="http://mediamad.co.za/#" id="jplayer_pause" class="jp-pause" tabindex="1" style="display: none;">pause</a></li>
+		
+							<li><a href="http://mediamad.co.za/#" id="jplayer_stop" class="jp-stop" tabindex="1">stop</a></li>
+							<li><a href="http://mediamad.co.za/#" id="jplayer_volume_min" class="jp-volume-min" tabindex="1">min volume</a></li>
+							<li><a href="http://mediamad.co.za/#" id="jplayer_volume_max" class="jp-volume-max" tabindex="1">max volume</a></li>
+						</ul>
+						<div class="jp-progress">
+							<div id="jplayer_load_bar" class="jp-load-bar" style="width: 100%;">
+								<div id="jplayer_play_bar" class="jp-play-bar" style="width: 28.91%;"></div>
+							</div>
+						</div>
+						<div id="jplayer_volume_bar" class="jp-volume-bar">
+							<div id="jplayer_volume_bar_value" class="jp-volume-bar-value" style="width: 35%;"></div>
+						</div>
+						<div id="jplayer_play_time" class="jp-play-time">00:18</div>
+						<div id="jplayer_total_time" class="jp-total-time">01:05</div>
+					</div>
+				</div>
+				<center>Loading <span id="jplayer_load_percent">100</span>%</center>
+			</div></div></body></html>
