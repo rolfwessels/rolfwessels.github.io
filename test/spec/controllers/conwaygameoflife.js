@@ -17,7 +17,7 @@ describe('Controller: ConwaygameoflifeCtrl', function () {
   }));
 
   it('should introduce width and heigh', function () {
-    expect(scope.board.width).toBe(10);
-    expect(scope.board.height).toBe(10);
+    expect(scope.board.width).toBe(30);
+    expect(scope.board.height).toBe(30);
   });
 });

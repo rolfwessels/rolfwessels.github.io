@@ -8,13 +8,25 @@ describe('Service: Processboard', function () {
   // instantiate service
   var Processboard;
   var defaultBoard ;
-  beforeEach(inject(function (_Processboard_) {
+  var generateBoardMock;
+  
+   beforeEach(function () {
+
+       generateBoardMock = function () {
+
+       };
+
+           module(function ($provide) {
+           $provide.value('GenerateBoard', generateBoardMock);
+       });
+
+   });
+
+
+
+  beforeEach(inject(function (_Processboard_,_Generateboard_) {
     Processboard = _Processboard_;
-    defaultBoard = {
-      width: 100,
-      height:100,
-      items : []
-    };
+    defaultBoard = new _Generateboard_(100,100);
   }));
 
   it('contructor should work', function () {
@@ -22,24 +34,20 @@ describe('Service: Processboard', function () {
     expect(!!processBoard).toBe(true);
   });
 
-  it('contructor should work', function () {
+  it('processBoard should remove items that do not meet criteria', function () {
     var processBoard = Processboard;
+    defaultBoard.add({x:1,y:1});
     var items = processBoard.processBoard(defaultBoard);
     expect(items.length).toBe(0);
   });
 
   it('contructor should work', function () {
     var processBoard = Processboard;
-    defaultBoard.items.push({x:1,y:1});
+    defaultBoard.add({x:0,y:1});
+    defaultBoard.add({x:1,y:1});
+    defaultBoard.add({x:2,y:1});
     var items = processBoard.processBoard(defaultBoard);
-    expect(items.length).toBe(0);
-  });
-
-  it('contructor should work', function () {
-    var processBoard = Processboard;
-    defaultBoard.items.push({x:1,y:1},{x:1,y:2});
-    var items = processBoard.processBoard(defaultBoard);
-    expect(items.length).toBe(0);
+    expect(items.length).toBe(3);
   });
 
 });

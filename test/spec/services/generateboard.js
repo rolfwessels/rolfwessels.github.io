@@ -12,7 +12,7 @@ describe('Service: Generateboard', function () {
   }));
 
   it('should return function what generates clean board', function () {
-    var board = new Generateboard(100.100);
+    var board = new Generateboard(100,100);
     expect(board.items().length).toBe(0);
   });
 
@@ -41,6 +41,25 @@ describe('Service: Generateboard', function () {
     board.add({x:1,y:1});
     expect(board.items().length).toBe(1);
   });
+
+   it('add give array of items', function () {
+    var board = new Generateboard(101,102);
+    board.add([{x:1,y:1},{x:1,y:2}]);
+    expect(board.items().length).toBe(2);
+  });
+
+
+   it('add give items out of bounds', function () {
+    var board = new Generateboard(100,100);
+    board.add([
+      {x:-1,y:1},
+      {x:1,y:-1},
+      {x:101,y:1},
+      {x:1,y:101}
+      ]);
+    expect(board.items().length).toBe(0);
+  });
+
 
   it('getLiveNeighbours given item should return neighbours', function () {
     var board = new Generateboard(101,102);
@@ -213,6 +232,19 @@ describe('Service: Generateboard', function () {
     board.add({x:1,y:1});
     board.add({x:2,y:1});    
     expect(board.getAllItemsOfInterest().length).toEqual(12);
+  });
+
+
+ it('isAlive if is in list should return true', function () {
+    var board = new Generateboard(101,102);
+    board.add({x:1,y:1});
+    expect(board.isAlive({x:1,y:1})).toEqual(true);
+  });
+
+  it('isAlive if not in list should return false', function () {
+    var board = new Generateboard(101,102);
+    board.add({x:1,y:1});
+    expect(board.isAlive({x:1,y:2})).toEqual(false);
   });
 
 });

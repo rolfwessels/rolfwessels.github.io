@@ -19,11 +19,19 @@ angular.module('lazyCowProjectsApp')
     	height:height,
     	_items : {},
     	add : function (item) {
-    		
-            var key = this.getKey(item);
-    		if (!this._items[key]) {
-    			this._items[key] = (item);
-    		}
+    		if (angular.isArray(item)) {
+                for (var i = 0; i < item.length; i++) {
+                    this.add(item[i]);
+                };
+                return;
+            }
+            if (item.x >= 0 && item.x < this.width && item.y >= 0 && item.y < this.height ) 
+            {
+                var key = this.getKey(item);
+        		if (!this._items[key]) {
+        			this._items[key] = (item);
+        		}
+            }
     	},
     	
         items : function () {
@@ -42,6 +50,7 @@ angular.module('lazyCowProjectsApp')
             return position.x+"_"+position.y;
         },
 
+
     	randomize : function (count) {
     		this.clear();
     		for (var i = count - 1; i >= 0; i--) {
@@ -52,6 +61,11 @@ angular.module('lazyCowProjectsApp')
     			this.add(generated);
     		}
     	},
+
+        isAlive : function (position) {
+            var key = this.getKey(position);
+            return (this._items[key])?true:false;
+        },
 
         getLiveNeighbours : function (position) {
             var allLiveItems = this.items();
