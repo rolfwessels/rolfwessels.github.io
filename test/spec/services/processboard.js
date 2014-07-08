@@ -7,13 +7,12 @@ describe('Service: Processboard', function () {
 
   // instantiate service
   var Processboard;
-  beforeEach(inject(function (Processboard) {
-    Processboard = Processboard;
+  beforeEach(inject(function (_Processboard_) {
+    Processboard = _Processboard_;
   }));
 
   it('should do something', function () {
-
-     
+    expect(!!Processboard).toBe(true);
      
   });
 
