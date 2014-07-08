@@ -1,0 +1,10 @@
+<table class="table table-bordered" style="width:100%; height:100%">
+	<tbody>
+	<tr ng-repeat="y in [] | range:board.height">
+		<td id="cell_{{x}}_{{y}}" ng-repeat="x in [] | range:board.width" class="cell">
+			&nbsp;
+		</td>
+	</tr>
+	</tbody>
+	<span ng-init="start()">
+</table>

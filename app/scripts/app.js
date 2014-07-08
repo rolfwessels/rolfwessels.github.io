@@ -24,6 +24,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/conwaygameoflife', {
+        templateUrl: 'views/conwaygameoflife.html',
+        controller: 'ConwaygameoflifeCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
