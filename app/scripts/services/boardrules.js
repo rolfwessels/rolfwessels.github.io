@@ -9,5 +9,9 @@
  */
 angular.module('lazyCowProjectsApp')
   .service('Boardrules', function Boardrules() {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+    return {
+    	isAlive : function (isAlive,liveNeigbours) {
+    		return (isAlive && liveNeigbours == 2 || liveNeigbours == 3) || (!isAlive  && liveNeigbours == 3);
+    	}
+    }
   });

@@ -9,5 +9,9 @@
  */
 angular.module('lazyCowProjectsApp')
   .service('Processboard', function Processboard() {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+    return {
+    	processBoard : function (board) {
+    		return [];
+    	}
+    }
   });

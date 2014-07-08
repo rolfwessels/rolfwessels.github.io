@@ -22,6 +22,7 @@ angular.module('lazyCowProjectsApp')
 
     $scope.start = function () {
     	$timeout(function () {
+    		$scope.board.randomize(10);
     		$scope.board.draw();	
     	},100);
     };
